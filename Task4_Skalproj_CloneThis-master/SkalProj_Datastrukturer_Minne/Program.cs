@@ -72,15 +72,21 @@ namespace SkalProj_Datastrukturer_Minne
              * Below you can see some inspirational code to begin working.
             */
 
+            Console.WriteLine("Entered ExamineList method.");//debugging, to be removed
+
             List<string> theList = new List<string>();
-            string input = Console.ReadLine();
-            char nav = input[0];
-            string value = input.substring(1);
+            string input;
+            char nav;
+            string value;
 
             //switch(nav){...}
             bool exit = false;
             while(!exit)
             {
+                Console.WriteLine("Entered while loop");    //debugging, to be removed
+                input = Console.ReadLine()!;
+                nav = input[0];
+                value = input.Substring(1);
                 switch (nav)
                 {
                     case '0':
@@ -88,23 +94,28 @@ namespace SkalProj_Datastrukturer_Minne
                         break;
                     case '+':
                         theList.Add(value);
-                    case "-":
-                        RemoveFromList;
+                        Console.WriteLine("Added " + theList[0] + " to the list"); //debugging, to be removed
+                        break;
+                    case '-':
+                        RemoveFromList(value, theList);
+                        break;
                     default:
-                        Console.WriteLine("Please enter a valid input: +'string', -'string' or 0 to exit to the main menue.");
+                        Console.WriteLine("Please enter a valid input: +string, -string or 0 to exit to the main menue.");
+                        break;
                 }
             }
 
         }
         static void RemoveFromList(string value, List<string> list)
         {
+            Console.WriteLine("Entered RemoveFromList");//debugging, to be removed
             if (list.Contains(value))
             {
-                parts.Remove(value);
+                list.Remove(value);
             }
             else
             {
-                Console.WriteLine('List does not contain ' + value);
+                Console.WriteLine("List does not contain " + value);
             }
         }
 
@@ -118,7 +129,7 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to enqueue items or dequeue items
              * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
             */
-            continue;
+            
         }
 
         /// <summary>
@@ -131,7 +142,7 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to push or pop items
              * Make sure to look at the stack after pushing and and poping to see how it behaves
             */
-            continue;
+           
         }
 
         static void CheckParanthesis()
@@ -141,7 +152,7 @@ namespace SkalProj_Datastrukturer_Minne
              * Example of correct: (()), {}, [({})],  List<int> list = new List<int>() { 1, 2, 3, 4 };
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
-            continue;
+           
 
         }
 
