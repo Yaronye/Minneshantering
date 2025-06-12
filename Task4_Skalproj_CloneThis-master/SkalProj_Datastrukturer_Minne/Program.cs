@@ -207,25 +207,21 @@ namespace SkalProj_Datastrukturer_Minne
              * Example of correct: (()), {}, [({})],  List<int> list = new List<int>() { 1, 2, 3, 4 };
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
-            var theStack = new Stack<string>();
-            string input;
-            char nav;
-            string value;
-
-            input = Console.ReadLine()!;
-            nav = input[0];
-            value = input.Substring(1);
+            var theStack = new Stack<char>();
+            Console.WriteLine("Please enter the string to be checked. ");
+            string input = Console.ReadLine()!;
+            char value;
 
             for (int i = 0; i < theStack.Count; i++)
             {
-                value = theStack[i];
+                value = input[i];
                 if(value == '(' || value == '{' || value == '[')
                 {
                     theStack.Push(value);
                 }
                 else
                 {
-                    if((st.Count > 0 &&
+                    if((theStack.Count > 0 &&
                     ((theStack.Peek() == '(' && value == ')') ||
                      (theStack.Peek() == '{' && value == '}') ||
                      (theStack.Peek() == '[' && value == ']'))))
