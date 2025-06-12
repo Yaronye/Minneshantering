@@ -63,7 +63,7 @@ namespace SkalProj_Datastrukturer_Minne
         static void ExamineList()
         {
             /*
-             * Loop this method untill the user inputs something to exit to main menue.
+             * Loop this method until the user inputs something to exit to main menue.
              * Create a switch statement with cases '+' and '-'
              * '+': Add the rest of the input to the list (The user could write +Adam and "Adam" would be added to the list)
              * '-': Remove the rest of the input from the list (The user could write -Adam and "Adam" would be removed from the list)
@@ -72,12 +72,40 @@ namespace SkalProj_Datastrukturer_Minne
              * Below you can see some inspirational code to begin working.
             */
 
-            //List<string> theList = new List<string>();
-            //string input = Console.ReadLine();
-            //char nav = input[0];
-            //string value = input.substring(1);
+            List<string> theList = new List<string>();
+            string input = Console.ReadLine();
+            char nav = input[0];
+            string value = input.substring(1);
 
             //switch(nav){...}
+            bool exit = false;
+            while(!exit)
+            {
+                switch (nav)
+                {
+                    case '0':
+                        exit = true;
+                        break;
+                    case '+':
+                        theList.Add(value);
+                    case "-":
+                        RemoveFromList;
+                    default:
+                        Console.WriteLine("Please enter a valid input: +'string', -'string' or 0 to exit to the main menue.");
+                }
+            }
+
+        }
+        static void RemoveFromList(string value, List<string> list)
+        {
+            if (list.Contains(value))
+            {
+                parts.Remove(value);
+            }
+            else
+            {
+                Console.WriteLine('List does not contain ' + value);
+            }
         }
 
         /// <summary>
@@ -90,6 +118,7 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to enqueue items or dequeue items
              * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
             */
+            continue;
         }
 
         /// <summary>
@@ -102,6 +131,7 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to push or pop items
              * Make sure to look at the stack after pushing and and poping to see how it behaves
             */
+            continue;
         }
 
         static void CheckParanthesis()
@@ -111,6 +141,7 @@ namespace SkalProj_Datastrukturer_Minne
              * Example of correct: (()), {}, [({})],  List<int> list = new List<int>() { 1, 2, 3, 4 };
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
+            continue;
 
         }
 
