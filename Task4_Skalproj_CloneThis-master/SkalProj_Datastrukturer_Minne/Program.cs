@@ -212,7 +212,7 @@ namespace SkalProj_Datastrukturer_Minne
             string input = Console.ReadLine()!;
             char value;
 
-            for (int i = 0; i < theStack.Count; i++)
+            for (int i = 0; i < input.Length; i++)
             {
                 value = input[i];
                 if(value == '(' || value == '{' || value == '[')
@@ -227,10 +227,6 @@ namespace SkalProj_Datastrukturer_Minne
                      (theStack.Peek() == '[' && value == ']'))))
                     {
                         theStack.Pop();
-                    }
-                    else
-                    {
-                        Console.WriteLine("The brackets are unbalanced.");
                     }
                 }
             }
