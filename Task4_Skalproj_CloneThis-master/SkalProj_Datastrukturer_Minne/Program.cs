@@ -83,7 +83,6 @@ namespace SkalProj_Datastrukturer_Minne
             bool exit = false;
             while(!exit)
             {
-                Console.WriteLine("Entered while loop");    //debugging, to be removed
                 input = Console.ReadLine()!;
                 nav = input[0];
                 value = input.Substring(1);
@@ -94,10 +93,11 @@ namespace SkalProj_Datastrukturer_Minne
                         break;
                     case '+':
                         theList.Add(value);
-                        Console.WriteLine("Added " + theList[0] + " to the list"); //debugging, to be removed
+                        Console.WriteLine("Current list has " + theList.Count + " entries, and " + theList.Capacity + " total capacity."); 
                         break;
                     case '-':
                         RemoveFromList(value, theList);
+                        Console.WriteLine("Current list has " + theList.Count + " entries, and " + theList.Capacity + " total capacity.");
                         break;
                     default:
                         Console.WriteLine("Please enter a valid input: +string, -string or 0 to exit to the main menue.");
@@ -108,7 +108,6 @@ namespace SkalProj_Datastrukturer_Minne
         }
         static void RemoveFromList(string value, List<string> list)
         {
-            Console.WriteLine("Entered RemoveFromList");//debugging, to be removed
             if (list.Contains(value))
             {
                 list.Remove(value);
@@ -129,9 +128,36 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to enqueue items or dequeue items
              * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
             */
-            
-        }
+            var theQueue = new Queue<string>();
+            string input;
+            char nav;
+            string value;
 
+            bool exit = false;
+            while (!exit)
+            {
+                input = Console.ReadLine()!;
+                nav = input[0];
+                value = input.Substring(1);
+                switch (nav)
+                {
+                    case '0':
+                        exit = true;
+                        break;
+                    case '+':
+                        theQueue.Enqueue(value);
+                        Console.WriteLine("Current head of the queue: " + theQueue.Peek());
+                        break;
+                    case '-':
+                        theQueue.Dequeue();
+                        Console.WriteLine("Current head of the queue: " + theQueue.Peek());
+                        break;
+                    default:
+                        Console.WriteLine("Please enter a valid input: +string, -string or 0 to exit to the main menue.");
+                        break;
+                }
+            }
+        }
         /// <summary>
         /// Examines the datastructure Stack
         /// </summary>
@@ -142,6 +168,7 @@ namespace SkalProj_Datastrukturer_Minne
              * Create a switch with cases to push or pop items
              * Make sure to look at the stack after pushing and and poping to see how it behaves
             */
+
            
         }
 
