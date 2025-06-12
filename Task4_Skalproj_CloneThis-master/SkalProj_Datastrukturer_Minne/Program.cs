@@ -169,18 +169,83 @@ namespace SkalProj_Datastrukturer_Minne
              * Make sure to look at the stack after pushing and and poping to see how it behaves
             */
 
-           
+            var theStack = new Stack<string>();
+            string input;
+            char nav;
+            string value;
+
+            bool exit = false;
+            while (!exit)
+            {
+                input = Console.ReadLine()!;
+                nav = input[0];
+                value = input.Substring(1);
+                switch (nav)
+                {
+                    case '0':
+                        exit = true;
+                        break;
+                    case '+':
+                        theStack.Push(value);
+                        Console.WriteLine("Current head of the Stack: " + theStack.Peek());
+                        break;
+                    case '-':
+                        theStack.Pop();
+                        Console.WriteLine("Current head of the queue: " + theStack.Peek());
+                        break;
+                    default:
+                        Console.WriteLine("Please enter a valid input: +string, -string or 0 to exit to the main menue.");
+                        break;
+                }
+            }
         }
 
-        static void CheckParanthesis()
+        static void CheckParanthesis()      //referenced from https://www.geeksforgeeks.org/check-for-balanced-parentheses-in-an-expression/
         {
             /*
              * Use this method to check if the paranthesis in a string is Correct or incorrect.
              * Example of correct: (()), {}, [({})],  List<int> list = new List<int>() { 1, 2, 3, 4 };
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
-           
+            var theStack = new Stack<string>();
+            string input;
+            char nav;
+            string value;
 
+            input = Console.ReadLine()!;
+            nav = input[0];
+            value = input.Substring(1);
+
+            for (int i = 0; i < theStack.Count; i++)
+            {
+                value = theStack[i];
+                if(value == '(' || value == '{' || value == '[')
+                {
+                    theStack.Push(value);
+                }
+                else
+                {
+                    if((st.Count > 0 &&
+                    ((theStack.Peek() == '(' && value == ')') ||
+                     (theStack.Peek() == '{' && value == '}') ||
+                     (theStack.Peek() == '[' && value == ']'))))
+                    {
+                        theStack.Pop();
+                    }
+                    else
+                    {
+                        Console.WriteLine("The brackets are unbalanced.");
+                    }
+                }
+            }
+            if(theStack.Count == 0)
+            {
+                Console.WriteLine("The brackets are balanced.");
+            }
+            else
+            {
+                Console.WriteLine("The brackets are unbalanced.");
+            }
         }
 
     }
