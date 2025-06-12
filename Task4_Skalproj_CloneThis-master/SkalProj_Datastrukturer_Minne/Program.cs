@@ -72,7 +72,7 @@ namespace SkalProj_Datastrukturer_Minne
              * Below you can see some inspirational code to begin working.
             */
 
-            Console.WriteLine("Entered ExamineList method.");//debugging, to be removed
+            Console.WriteLine("Please write '+string' to add the string to the list, '-string' to remove the string from the list or 0 to exit to the main menu.");
 
             List<string> theList = new List<string>();
             string input;
@@ -108,7 +108,11 @@ namespace SkalProj_Datastrukturer_Minne
         }
         static void RemoveFromList(string value, List<string> list)
         {
-            if (list.Contains(value))
+            if (list.Count == 0)
+            {
+                Console.WriteLine("The list is empty.");
+            }
+            else if (list.Contains(value))
             {
                 list.Remove(value);
             }
@@ -134,6 +138,7 @@ namespace SkalProj_Datastrukturer_Minne
             string value;
 
             bool exit = false;
+            Console.WriteLine("Please write '+string' to add the string to the queue, '-' to remove the first element from the queue or 0 to exit to the main menu.");
             while (!exit)
             {
                 input = Console.ReadLine()!;
@@ -149,8 +154,15 @@ namespace SkalProj_Datastrukturer_Minne
                         Console.WriteLine("Current head of the queue: " + theQueue.Peek());
                         break;
                     case '-':
-                        theQueue.Dequeue();
-                        Console.WriteLine("Current head of the queue: " + theQueue.Peek());
+                        if(theQueue.Count == 0)
+                        {
+                            Console.WriteLine("The queue is empty.");
+                        }
+                        else
+                        {
+                            theQueue.Dequeue();
+                            Console.WriteLine("Current head of the queue: " + theQueue.Peek());
+                        }
                         break;
                     default:
                         Console.WriteLine("Please enter a valid input: +string, -string or 0 to exit to the main menue.");
@@ -175,6 +187,7 @@ namespace SkalProj_Datastrukturer_Minne
             string value;
 
             bool exit = false;
+            Console.WriteLine("Please write '+string' to add the string to the stack, '-' to remove the head from the stack or 0 to exit to the main menu.");
             while (!exit)
             {
                 input = Console.ReadLine()!;
@@ -190,8 +203,15 @@ namespace SkalProj_Datastrukturer_Minne
                         Console.WriteLine("Current head of the Stack: " + theStack.Peek());
                         break;
                     case '-':
-                        theStack.Pop();
-                        Console.WriteLine("Current head of the queue: " + theStack.Peek());
+                        if (theQueue.Count == 0)
+                        {
+                            Console.WriteLine("The stack is empty.");
+                        }
+                        else
+                        {
+                            theStack.Pop();
+                            Console.WriteLine("Current head of the queue: " + theStack.Peek());
+                        }
                         break;
                     default:
                         Console.WriteLine("Please enter a valid input: +string, -string or 0 to exit to the main menue.");
@@ -208,7 +228,7 @@ namespace SkalProj_Datastrukturer_Minne
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
             var theStack = new Stack<char>();
-            Console.WriteLine("Please enter the string to be checked. ");
+            Console.WriteLine("Please enter a string to be checked. ");
             string input = Console.ReadLine()!;
             char value;
 
