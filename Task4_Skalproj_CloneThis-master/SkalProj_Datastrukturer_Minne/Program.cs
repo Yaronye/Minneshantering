@@ -1,4 +1,8 @@
 ﻿using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Collections.Generic;
+using System.Net.Sockets;
+using System.Threading.Tasks;
 
 namespace SkalProj_Datastrukturer_Minne
 {
@@ -6,6 +10,8 @@ namespace SkalProj_Datastrukturer_Minne
     {
         /// <summary>
         /// The main method, vill handle the menues for the program
+        
+        
         /// </summary>
         /// <param name="args"></param>
         static void Main()
@@ -18,6 +24,7 @@ namespace SkalProj_Datastrukturer_Minne
                     + "\n2. Examine a Queue"
                     + "\n3. Examine a Stack"
                     + "\n4. CheckParenthesis"
+                    + "\n5. ReverseString"
                     + "\n0. Exit the application");
                 char input = ' '; //Creates the character input to be used with the switch-case below.
                 try
@@ -43,6 +50,9 @@ namespace SkalProj_Datastrukturer_Minne
                     case '4':
                         CheckParanthesis();
                         break;
+                    case '5':
+                        ReverseString(); 
+                        break;
                     /*
                      * Extend the menu to include the recursive 
                      * and iterative exercises.
@@ -59,6 +69,25 @@ namespace SkalProj_Datastrukturer_Minne
 
         /// <summary>
         /// Examines the datastructure List
+        /*
+        
+        1. När ökar listans kapacitet? (Alltså den underliggande arrayens storlek) 
+            När man når full kapacitet, då ökar den med 4 platser.
+
+        2. Med hur mycket ökar kapaciteten?
+            4 slots
+
+        3. Varför ökar inte listans kapacitet i samma takt som element läggs till? 
+            För att det skulle innebära en extra händelse varje gång något läggs till i listan.smth smth bit sizes
+
+        4. Minskar kapaciteten när element tas bort ur listan? 
+            Nej.
+
+        5. När är det då fördelaktigt att använda en egendefinierad array istället för en lista? 
+            När man vet hur stor man behöver att containern ska vara är det bättre med en array då den har en konstant access time genom indexing.
+
+
+        */
         /// </summary>
         static void ExamineList()
         {
@@ -172,6 +201,20 @@ namespace SkalProj_Datastrukturer_Minne
         }
         /// <summary>
         /// Examines the datastructure Stack
+        /*
+        
+        1. Simulera ännu en gång ICA-kön på papper. Denna gång med en stack. Varför är det inte så smart att använda en stack i det här fallet? 
+
+            För att den som ställer sig i kön senast alltid kommer få hjälp först, medans de som ställde sig i kön tidigt måste vänta tills ingen annan ställer sig i kön innan de får hjälp.
+
+
+
+        2. Implementera en ReverseText-metod som läser in en sträng från användaren och med hjälp av en stack vänder ordning på teckenföljden för att sedan skriva ut den omvända strängen till användaren. 
+            
+
+
+
+        */
         /// </summary>
         static void ExamineStack()
         {
@@ -203,7 +246,7 @@ namespace SkalProj_Datastrukturer_Minne
                         Console.WriteLine("Current head of the Stack: " + theStack.Peek());
                         break;
                     case '-':
-                        if (theQueue.Count == 0)
+                        if (theStack.Count == 0)
                         {
                             Console.WriteLine("The stack is empty.");
                         }
@@ -258,6 +301,26 @@ namespace SkalProj_Datastrukturer_Minne
             {
                 Console.WriteLine("The brackets are unbalanced.");
             }
+        }
+
+        static void ReverseString()
+        {
+            var theStack = new Stack<char>();
+            Console.WriteLine("Please enter a string to be reversed. ");
+            string input = Console.ReadLine()!;
+            string newString = "";
+            char value;
+            int count = input.Length;
+            for (int i = 0; i < count; i++)
+            {
+                value = input[i];
+                theStack.Push(value);
+            }
+            for (int i = 0; i < count; i++)
+            {
+                newString += theStack.Pop()!;
+            }
+            Console.WriteLine(newString + "\n");
         }
 
     }
